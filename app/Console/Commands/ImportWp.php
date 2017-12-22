@@ -39,7 +39,7 @@ class ImportWp extends Command
     {
         $domain = $this->argument('domain') . '/wp-json/wp/v2/';
 
-        collect(['posts', 'pages', 'categories', 'tags', 'media'])->each(function ($fetch) use ($domain) {
+        collect(['posts', 'pages', 'categories', 'comments', 'tags', 'media'])->each(function ($fetch) use ($domain) {
             \WPTL\Services\WordPress::make($domain)->setUri($fetch)->handle();
         });
     }
