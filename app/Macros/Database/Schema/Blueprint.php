@@ -2,8 +2,8 @@
 
 namespace WPTL\Macros\Database\Schema;
 
-use WPTL\Contracts\MacroContract;
 use Illuminate\Database\Schema\Blueprint as DefaultBlueprint;
+use WPTL\Contracts\MacroContract;
 
 /**
  * Extended Blueprint by using Macro
@@ -21,6 +21,12 @@ class Blueprint implements MacroContract
             $this->unsignedInteger($key)
                 ->index()
                 ->nullable();
+        });
+
+        DefaultBlueprint::macro('referenceOn', function ($key, $table, $primary = 'id') {
+            $this->foreign($key)
+                ->references($primary)
+                ->on($table);
         });
 
         DefaultBlueprint::macro('fkDeleteCascade', function ($key, $table) {
