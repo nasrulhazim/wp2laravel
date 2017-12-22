@@ -43,7 +43,7 @@ class SyncPost
      */
     public function handle()
     {
-        Post::create([
+        Post::firstOrCreate([
             'user_id' => 1,
             'title'   => html_entity_decode($this->instance->title->rendered),
             'content' => html_entity_decode($this->instance->content->rendered),
