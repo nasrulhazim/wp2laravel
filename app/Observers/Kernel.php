@@ -27,6 +27,7 @@ class Kernel
             \WPTL\Models\User::class,
             \WPTL\Models\Post::class,
             \WPTL\Models\Tag::class,
+            \WPTL\Models\Category::class,
             \Spatie\MediaLibrary\Media::class,
         ],
     ];
