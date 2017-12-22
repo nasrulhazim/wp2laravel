@@ -37,20 +37,24 @@ class ImportWpSync extends Command
      */
     public function handle()
     {
-        // get all files under storage/wp with prefix media
-        $path        = storage_path('wp/posts_*.json');
-        $grand_total = 0;
-        $count       = 1;
-        foreach (glob($path) as $filename) {
-            $posts       = json_decode(file_get_contents($filename));
-            $total       = count($posts);
-            $grand_total = $grand_total + $total;
-            foreach ($posts as $post) {
-                $this->comment('Processing: (' . $count . ') ' . html_entity_decode($post->title->rendered));
-                \WPTL\Processors\WordPress\SyncPost::make($post)->handle();
-                $count++;
+        collect(['tags', 'categories', 'media', 'comments', 'posts'])->each(function ($type) {
+            $path        = storage_path('wp/' . $type . '_*.json');
+            $grand_total = 0;
+            $count       = 1;
+            foreach (glob($path) as $filename) {
+                $records     = json_decode(file_get_contents($filename));
+                $total       = count($records);
+                $grand_total = $grand_total + $total;
+                foreach ($records as $record) {
+                    $this->comment('Processing: (' . $count . ') ');
+                    $class_name = '\WPTL\Processors\WordPress\Sync' . studly_case(str_singular($type));
+                    if (class_exists($class_name)) {
+                        $class_name::make($record)->handle();
+                    }
+                    $count++;
+                }
             }
-        }
-        $this->info('TOTAL POSTS: ' . $grand_total);
+            $this->info('TOTAL ' . strtoupper($type) . ': ' . $grand_total);
+        });
     }
 }
