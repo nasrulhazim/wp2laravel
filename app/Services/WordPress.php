@@ -1,15 +1,16 @@
 <?php
 
-namespace OSI\Services;
+namespace WPTL\Services;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
+use WPTL\Traits\HasWordPressService;
 
 /**
  * WordPress Service
  */
 class WordPress
 {
+    use HasWordPressService;
+
     /**
      * The current.
      *
@@ -25,13 +26,6 @@ class WordPress
     protected $total;
 
     /**
-     * The uri.
-     *
-     * @var $uri
-     */
-    protected $uri;
-
-    /**
      * Create a new GetPost domain.
      *
      * @return void
@@ -44,57 +38,21 @@ class WordPress
     }
 
     /**
-     * Create an domain of GetPost
-     *
-     * @return OSI\Services\WordPress\GetPost
-     */
-    public static function make($domain)
-    {
-        return new self($domain);
-    }
-
-    /**
-     * Set URI
-     * @param string $uri
-     * @return $this
-     */
-    public function setUri(string $uri)
-    {
-        $this->uri = $uri;
-        return $this;
-    }
-
-    /**
-     * Get URI
-     * @return string
-     */
-    public function getUri()
-    {
-        return $this->uri;
-    }
-
-    /**
      * Handle the processing
      *
      * @return void
      */
     public function handle()
     {
-        $client = new Client([
-            'base_uri' => $this->domain,
-        ]);
+        $client = $this->getClient();
 
         $offset = ($this->total - $this->current);
 
         if ($offset < 0) {
             return false;
         }
-        $request = new Request('GET', $this->getUri(), [
-            'query' => [
-                'per_page' => 100,
-                'offset'   => $offset,
-            ],
-        ]);
+
+        $request = $this->getRequest();
 
         $promise = $client->sendAsync($request)->then(function ($response) {
             $this->total = $response->getHeader('x-wp-total')[0];
@@ -115,7 +73,7 @@ class WordPress
      * @param  json $content
      * @return void
      */
-    private function store($type, $content)
+    public function store($type, $content)
     {
         $filename = 'wp/' . $type . '_' . \Carbon\Carbon::now()->format('YmdHis') . '.json';
         file_put_contents(storage_path($filename), $this->json_pretty($content));
@@ -126,7 +84,7 @@ class WordPress
      * @param  json $data JSON Encoded
      * @return json       JSON Pretty Encoded
      */
-    private function json_pretty($data)
+    public function json_pretty($data)
     {
         $data = json_decode($data);
         return json_encode($data, JSON_PRETTY_PRINT);
