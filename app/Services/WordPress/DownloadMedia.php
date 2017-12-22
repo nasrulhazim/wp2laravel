@@ -105,6 +105,10 @@ class DownloadMedia
      */
     public function handle()
     {
+        if ($this->files->exists($this->getFilePath())) {
+            echo $this->getFilename() . ' already exist.' . PHP_EOL;
+            return false;
+        }
         $this->makeDirectory($this->getFilePath());
         $this->getDownloadRequest($this->getFilePath());
     }
