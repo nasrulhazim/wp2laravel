@@ -19,11 +19,11 @@ class WordPress
     protected $current;
 
     /**
-     * The total.
+     * The total_pages.
      *
-     * @var $total
+     * @var $total_pages
      */
-    protected $total;
+    protected $total_pages;
 
     /**
      * Create a new GetPost domain.
@@ -33,8 +33,7 @@ class WordPress
     public function __construct($domain)
     {
         $this->domain  = $domain;
-        $this->total   = 100;
-        $this->current = 0;
+        $this->current = 1;
     }
 
     /**
@@ -44,25 +43,23 @@ class WordPress
      */
     public function handle()
     {
-        $client = $this->getClient();
+        $message = $this->getUri() . ' page - ' . $this->current;
+        echo title_case($message) . PHP_EOL;
 
-        $offset = ($this->total - $this->current);
-
-        if ($offset < 0) {
-            return false;
+        if ($this->current % 5 == 0) {
+            sleep(3); // sleep
         }
 
-        $request = $this->getRequest();
-
+        $client  = $this->getClient();
+        $request = $this->getRequest($this->current);
         $promise = $client->sendAsync($request)->then(function ($response) {
-            $this->total = $response->getHeader('x-wp-total')[0];
-            $this->total = ((int) $this->total);
+            $this->total_pages = $response->getHeader('X-WP-TotalPages')[0];
+            $this->total_pages = ((int) $this->total_pages);
             $this->store($this->uri, $response->getBody());
         });
         $promise->wait();
-
-        if ($this->current < $this->total) {
-            $this->current = $this->current + 100;
+        if ($this->current <= $this->total_pages) {
+            $this->current = $this->current + 1;
             $this->handle();
         }
     }
