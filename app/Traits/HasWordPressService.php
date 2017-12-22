@@ -60,13 +60,20 @@ trait HasWordPressService
      * @param  integer $offset
      * @return GuzzleHttp\Psr7\Request
      */
-    protected function getRequest($offset = 0)
+    protected function getRequest($page)
     {
-        return new Request('GET', $this->getUri(), [
-            'query' => [
-                'per_page' => 100,
-                'offset'   => $offset,
-            ],
+        return new Request('GET', $this->getUri() . '?per_page=100&amp;page=' . $page);
+    }
+
+    /**
+     * Get Download Request
+     * @param  string $path Path to save the downloaded file
+     * @return GuzzleHttp\Psr7\Request
+     */
+    protected function getDownloadRequest($path)
+    {
+        return $this->getClient()->request('GET', $this->getUri(), [
+            'sink' => $path,
         ]);
     }
 }
