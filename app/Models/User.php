@@ -5,12 +5,12 @@ namespace WPTL\Models;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
+use Spatie\Permission\Traits\HasRoles;
 use WPTL\Traits\HasMediaExtended;
 use WPTL\Traits\HasSlugExtended;
 use WPTL\Traits\HasThumbnail;
 use WPTL\Traits\LogsActivityExtended;
-use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements HasMediaConversions
 {
@@ -46,5 +46,14 @@ class User extends Authenticatable implements HasMediaConversions
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Has Many Posts
+     * @return \WPTL\Models\Post
+     */
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 
 }

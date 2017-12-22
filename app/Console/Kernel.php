@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \WPTL\Console\Commands\ImportWp::class,
         \WPTL\Console\Commands\ImportWpMedia::class,
+        \WPTL\Console\Commands\ImportWpSync::class,
     ];
 
     /**
