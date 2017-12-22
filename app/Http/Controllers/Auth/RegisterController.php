@@ -1,9 +1,9 @@
 <?php
 
-namespace OSI\Http\Controllers\Auth;
+namespace WPTL\Http\Controllers\Auth;
 
-use OSI\Http\Controllers\Controller;
-use OSI\Models\User;
+use WPTL\Http\Controllers\Controller;
+use WPTL\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 
@@ -58,7 +58,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \OSI\Models\User
+     * @return \WPTL\Models\User
      */
     protected function create(array $data)
     {

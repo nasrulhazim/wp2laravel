@@ -1,6 +1,6 @@
 <?php
 
-namespace OSI\Http\Controllers;
+namespace WPTL\Http\Controllers;
 
 class WelcomeController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace OSI\Observers;
+namespace WPTL\Observers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;

@@ -1,6 +1,6 @@
 <?php
 
-namespace OSI\Http\Middleware;
+namespace WPTL\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Fideloper\Proxy\TrustProxies as Middleware;

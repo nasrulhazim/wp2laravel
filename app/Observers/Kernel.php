@@ -1,6 +1,6 @@
 <?php
 
-namespace OSI\Observers;
+namespace WPTL\Observers;
 
 /**
  *
@@ -20,18 +20,18 @@ class Kernel
      * @var array
      */
     protected $observeBy = [
-        \OSI\Observers\ReferenceObserver::class => [
+        \WPTL\Observers\ReferenceObserver::class => [
 
         ],
-        \OSI\Observers\HashidsObserver::class   => [
-            \OSI\Models\User::class,
+        \WPTL\Observers\HashidsObserver::class   => [
+            \WPTL\Models\User::class,
             \Spatie\MediaLibrary\Media::class,
         ],
     ];
 
     /**
      * Make this class
-     * @return \OSI\Observers\Kernel
+     * @return \WPTL\Observers\Kernel
      */
     public static function make()
     {

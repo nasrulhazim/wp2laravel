@@ -39,7 +39,7 @@
             "database/factories"
         ],
         "psr-4": {
-            "OSI\\": "app/"
+            "WPTL\\": "app/"
         }, 
         "files": [
             "app/Support/helpers.php"

@@ -1,6 +1,6 @@
 <?php
 
-namespace OSI\Services;
+namespace WPTL\Services;
 
 use Hashids\Hashids as HashidsProvider;
 
@@ -23,7 +23,7 @@ class Hashids
     /**
      * Create an instance of Hashids
      *
-     * @return OSI\Services\Hashids
+     * @return WPTL\Services\Hashids
      */
     public static function make($salt, $length, $alphabet)
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace OSI\Http\Controllers\User;
+namespace WPTL\Http\Controllers\User;
 
-use OSI\Http\Controllers\Controller;
+use WPTL\Http\Controllers\Controller;
 
 class LogController extends Controller
 {

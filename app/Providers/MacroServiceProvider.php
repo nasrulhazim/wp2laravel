@@ -1,6 +1,6 @@
 <?php
 
-namespace OSI\Providers;
+namespace WPTL\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -13,7 +13,7 @@ class MacroServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        \OSI\Macros\Database\Schema\Blueprint::registerMacros();
+        \WPTL\Macros\Database\Schema\Blueprint::registerMacros();
     }
 
     /**

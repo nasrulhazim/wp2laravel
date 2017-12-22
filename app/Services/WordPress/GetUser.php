@@ -1,8 +1,8 @@
 <?php
 
-namespace OSI\Services\WordPress;
+namespace WPTL\Services\WordPress;
 
-use OSI\Services\WordPress as WP;
+use WPTL\Services\WordPress as WP;
 
 /**
  * GetUser Service

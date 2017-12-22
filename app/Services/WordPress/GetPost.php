@@ -1,8 +1,8 @@
 <?php
 
-namespace OSI\Services\WordPress;
+namespace WPTL\Services\WordPress;
 
-use OSI\Services\WordPress as WPService;
+use WPTL\Services\WordPress as WPService;
 
 /**
  * GetPost Service

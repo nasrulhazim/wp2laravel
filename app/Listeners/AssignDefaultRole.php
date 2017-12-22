@@ -1,6 +1,6 @@
 <?php
 
-namespace OSI\Listeners;
+namespace WPTL\Listeners;
 
 use Illuminate\Auth\Events\Registered;
 
