@@ -56,6 +56,8 @@ class WordPress
             $this->total_pages = $response->getHeader('X-WP-TotalPages')[0];
             $this->total_pages = ((int) $this->total_pages);
             $this->store($this->uri, $response->getBody());
+        }, function ($exception) {
+            logger()->error($exception->getMessage());
         });
         $promise->wait();
         if ($this->current <= $this->total_pages) {
