@@ -11,7 +11,7 @@ class ImportWpMedia extends Command
      *
      * @var string
      */
-    protected $signature = 'import:wp-media';
+    protected $signature = 'import:wp-media {domain}';
 
     /**
      * The console command description.
@@ -37,6 +37,25 @@ class ImportWpMedia extends Command
      */
     public function handle()
     {
+        $domain = $this->argument('domain');
         // get all files under storage/wp with prefix media
+        $path = storage_path('wp/media_*.json');
+        foreach (glob($path) as $filename) {
+            $medias = json_decode(file_get_contents($filename));
+            $this->info($filename);
+            foreach ($medias as $media) {
+                $source_url = $media->guid->rendered;
+                $explode    = explode('/', $source_url);
+                $medianame  = $explode[count($explode) - 1];
+                $uri        = str_replace($domain, '', $source_url);
+                $path       = str_replace($medianame, '', $uri);
+                $this->comment('Downloading: ' . $medianame);
+                \WPTL\Services\WordPress\DownloadMedia::make($domain)
+                    ->setUri($uri)
+                    ->setFilePath($path)
+                    ->setFilename($medianame)
+                    ->handle();
+            }
+        }
     }
 }
