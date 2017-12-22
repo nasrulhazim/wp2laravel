@@ -62,7 +62,7 @@ trait HasWordPressService
      */
     protected function getRequest($page)
     {
-        return new Request('GET', $this->getUri() . '?per_page=100&amp;page=' . $page);
+        return new Request('GET', $this->getUri() . '?per_page=100&page=' . $page);
     }
 
     /**
