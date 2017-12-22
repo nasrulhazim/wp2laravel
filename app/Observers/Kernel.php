@@ -26,6 +26,7 @@ class Kernel
         \WPTL\Observers\HashidsObserver::class   => [
             \WPTL\Models\User::class,
             \WPTL\Models\Post::class,
+            \WPTL\Models\Tag::class,
             \Spatie\MediaLibrary\Media::class,
         ],
     ];
