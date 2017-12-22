@@ -1,6 +1,6 @@
 <?php
 
-namespace OSI\Http\Middleware;
+namespace WPTL\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as Middleware;
 

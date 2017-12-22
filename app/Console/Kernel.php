@@ -1,6 +1,6 @@
 <?php
 
-namespace OSI\Console;
+namespace WPTL\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \OSI\Console\Commands\ImportWp::class,
+        \WPTL\Console\Commands\ImportWp::class,
+        \WPTL\Console\Commands\ImportWpMedia::class,
     ];
 
     /**

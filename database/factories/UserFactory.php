@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(OSI\User::class, function (Faker $faker) {
+$factory->define(WPTL\User::class, function (Faker $faker) {
     static $password;
 
     return [

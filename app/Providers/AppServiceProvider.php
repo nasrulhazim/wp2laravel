@@ -1,6 +1,6 @@
 <?php
 
-namespace OSI\Providers;
+namespace WPTL\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace OSI\Http\Controllers\Auth;
+namespace WPTL\Http\Controllers\Auth;
 
-use OSI\Http\Controllers\Controller;
+use WPTL\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller

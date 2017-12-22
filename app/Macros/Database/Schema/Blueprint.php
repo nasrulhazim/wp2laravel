@@ -1,8 +1,8 @@
 <?php
 
-namespace OSI\Macros\Database\Schema;
+namespace WPTL\Macros\Database\Schema;
 
-use OSI\Contracts\MacroContract;
+use WPTL\Contracts\MacroContract;
 use Illuminate\Database\Schema\Blueprint as DefaultBlueprint;
 
 /**

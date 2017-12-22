@@ -1,6 +1,6 @@
 <?php
 
-namespace OSI\Traits;
+namespace WPTL\Traits;
 
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;

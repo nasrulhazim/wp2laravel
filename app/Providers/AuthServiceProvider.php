@@ -1,6 +1,6 @@
 <?php
 
-namespace OSI\Providers;
+namespace WPTL\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'OSI\Model' => 'OSI\Policies\ModelPolicy',
+        'WPTL\Model' => 'WPTL\Policies\ModelPolicy',
     ];
 
     /**

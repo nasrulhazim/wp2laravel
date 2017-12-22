@@ -1,6 +1,6 @@
 <?php
 
-namespace OSI\Providers;
+namespace WPTL\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
@@ -14,19 +14,19 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'Illuminate\Auth\Events\Registered'    => [
-            'OSI\Listeners\AssignDefaultRole',
+            'WPTL\Listeners\AssignDefaultRole',
         ],
         'Illuminate\Auth\Events\Login'         => [
-            'OSI\Listeners\LogSuccessfulLogin',
+            'WPTL\Listeners\LogSuccessfulLogin',
         ],
         'Illuminate\Auth\Events\Failed'        => [
-            'OSI\Listeners\LogFailedLogin',
+            'WPTL\Listeners\LogFailedLogin',
         ],
         'Illuminate\Auth\Events\Logout'        => [
-            'OSI\Listeners\LogSuccessfulLogout',
+            'WPTL\Listeners\LogSuccessfulLogout',
         ],
         'Illuminate\Auth\Events\PasswordReset' => [
-            'OSI\Listeners\LogPasswordReset',
+            'WPTL\Listeners\LogPasswordReset',
         ],
     ];
 

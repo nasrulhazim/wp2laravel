@@ -1,6 +1,6 @@
 <?php
 
-namespace OSI\Http\Middleware;
+namespace WPTL\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

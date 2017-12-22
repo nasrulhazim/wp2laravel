@@ -1,14 +1,14 @@
 <?php
 
-namespace OSI\Models;
+namespace WPTL\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use OSI\Traits\HasMediaExtended;
-use OSI\Traits\HasSlugExtended;
-use OSI\Traits\HasThumbnail;
-use OSI\Traits\LogsActivityExtended;
+use WPTL\Traits\HasMediaExtended;
+use WPTL\Traits\HasSlugExtended;
+use WPTL\Traits\HasThumbnail;
+use WPTL\Traits\LogsActivityExtended;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
 use Spatie\Permission\Traits\HasRoles;
 

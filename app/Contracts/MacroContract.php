@@ -1,6 +1,6 @@
 <?php
 
-namespace OSI\Contracts;
+namespace WPTL\Contracts;
 
 /**
  * MacroContract
