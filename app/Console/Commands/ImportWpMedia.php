@@ -43,18 +43,21 @@ class ImportWpMedia extends Command
         foreach (glob($path) as $filename) {
             $medias = json_decode(file_get_contents($filename));
             $this->info($filename);
+            $count = 1;
             foreach ($medias as $media) {
                 $source_url = $media->guid->rendered;
                 $explode    = explode('/', $source_url);
                 $medianame  = $explode[count($explode) - 1];
                 $uri        = str_replace($domain, '', $source_url);
                 $path       = str_replace($medianame, '', $uri);
+                $this->comment('Processing: ' . $count . '/' . count($medias));
                 $this->comment('Downloading: ' . $medianame);
                 \WPTL\Services\WordPress\DownloadMedia::make($domain)
                     ->setUri($uri)
                     ->setFilePath($path)
                     ->setFilename($medianame)
                     ->handle();
+                $count++;
             }
         }
     }
