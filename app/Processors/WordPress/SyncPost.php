@@ -45,6 +45,7 @@ class SyncPost
     {
         Post::firstOrCreate([
             'user_id' => 1,
+            'old_id'  => $this->instance->id,
             'title'   => html_entity_decode($this->instance->title->rendered),
             'content' => html_entity_decode($this->instance->content->rendered),
             'old_url' => $this->instance->link,
